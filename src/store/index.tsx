@@ -1,8 +1,12 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { usersSlice } from "./feature/users/slice";
+import { postSlice } from "./feature/posts/slice";
+import { albumsSlice } from "./feature/albums/slice";
 
 const combinedReducer = combineReducers({
   usersState: usersSlice.reducer,
+  postsState: postSlice.reducer,
+  albumsState: albumsSlice.reducer,
 });
 
 const rootReducer = (state: any, action: any) => {

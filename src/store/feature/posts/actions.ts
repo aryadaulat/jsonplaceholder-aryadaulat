@@ -6,11 +6,11 @@ const Server = axios.create({
   baseURL: "https://jsonplaceholder.typicode.com/",
 });
 
-export const getUsers = createAsyncThunk<any, undefined, { state: RootState }>(
-  "users",
+export const getPosts = createAsyncThunk<any, undefined, { state: RootState }>(
+  "posts",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await Server.get("/users", {
+      const response = await Server.get("/posts", {
         headers: { Accept: "application/json" },
       });
 
@@ -18,11 +18,10 @@ export const getUsers = createAsyncThunk<any, undefined, { state: RootState }>(
       if (response.status !== 200) {
         throw new Error(messages);
       }
-      console.log("response ", response.data);
       const data = response.data;
 
       return {
-        users: Object.values(data),
+        posts: Object.values(data),
         status: response.status,
       };
     } catch (e: any) {
